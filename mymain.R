@@ -99,7 +99,7 @@ set.seed(0)
 cv.out = cv.glmnet(train.matrix, log(train.y), alpha = alpha.min)
 write.csv(data.frame("PID" = test[, 1],
                      "Sale_Price" =
-                       exp(as.vector(predict(cv.out, s = cv.out$lambda.min,
-                                             newx = test.matrix)))),
+                       exp(as.vector(predict(cv.out, newx = test.matrix,
+                                             s = cv.out$lambda.min)))),
           "mysubmission1.txt",
           row.names = FALSE)
